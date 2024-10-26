@@ -1,3 +1,3 @@
 # demo
 This is just a demo
-Author - syntax-tic
+# Author - syntax-tic
