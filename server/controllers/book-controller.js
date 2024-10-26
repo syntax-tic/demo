@@ -48,4 +48,16 @@ const getAllBooks = async  (req, res)=>{
 
 }
 
-module.exports = {addBook, getBook, getAllBooks};
+
+const deleteBook = async (req, res)=>{
+    const {isbn} = req.body;
+    const bookExists = await Book.findOne({isbn:isbn});
+    if(bookExists){
+            const deletedBook = await Book.deleteOne({isbn:isbn});
+            if(deletedBook) return res.json({msg:"Book succesfully deleted"});
+            else return res.json({msg:"Server error"});
+    }
+    else return res.json({msg:"No such book exists"});
+}
+
+module.exports = {addBook, getBook, getAllBooks, deleteBook};

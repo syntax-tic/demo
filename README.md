@@ -11,7 +11,12 @@ A library management system
 - issuing books to people
 - setting due date for return
 - personalised book record for each user
+- deleting books from the data base
 ## Far ahead features
 - issuing books by scanning id cards of students
-- filter books based on genre, subject, topic etc.
+- filter books based on genre, subject, topic etc. and many more...
 
+
+# Note
+ - Only backend is being developed now, focus will be on backend until i reach a particular stage in development where we can start implementing frontend alongside backend
+ 
