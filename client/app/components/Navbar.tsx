@@ -9,9 +9,14 @@ interface NavbarProps {
   onLogout?: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const pathname = usePathname(); // Get the current path
   const [token, setToken] = useState(localStorage.getItem('token')); 
+
+const onLogout = ()=>{
+  localStorage.removeItem('token');
+  setToken('');
+}
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar__logo}>
@@ -29,6 +34,9 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
         </li>
         {!token && <li className={pathname === "/login" ? styles.active : ""}>
           <Link href="/login">Login</Link>
+        </li>}
+        {!token && <li className={pathname === "/register" ? styles.active : ""}>
+          <Link href="/register">Register</Link>
         </li>}
         {!!token && <li>
           <button className={styles.navbar__logout} onClick={onLogout}>
