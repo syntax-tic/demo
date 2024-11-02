@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Login from "./components/Login";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
     <>
-    <Login />
+    <Navbar/>
+    Welcome to homepage
     </>
   );
 }
