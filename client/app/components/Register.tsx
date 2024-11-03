@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Loader from './Loader';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,19 +54,12 @@ const Register: React.FC = () => {
     email: "",
     password: ""
   });
-  const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
     setMessage(null);
-    useEffect(() => {
-        // Redirect to the home page if a token is present
-        if (token) {
-          router.push('/');
-        }
-      }, [token, router]);
     try {
       const response = await fetch('http://localhost:5173/api/register', {
         method: "POST",
@@ -75,18 +68,10 @@ const Register: React.FC = () => {
         },
         body: JSON.stringify(user),
       });
-
-      if (response.ok) {
-        setMessage("Registration successful! You can now log in.");
-      } else {
-        const data = await response.json();
-        setMessage(data.message || "Registration failed. Please try again.");
-      }
-    } catch (error) {
-      setMessage("An error occurred. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+      const data = await response.json();
+      localStorage.setItem('token', data.token);
+      setToken(data.token);
+    }catch(e){console.log(e);}
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,7 +82,7 @@ const Register: React.FC = () => {
     }));
   };
    
-if (token) return null;
+if (token) return redirect('/');
 
   return (
     <Container>

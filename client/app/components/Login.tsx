@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Loader from './Loader';
+import { redirect } from 'next/navigation';
 
   
 const Container = styled.div`
@@ -68,7 +69,7 @@ const Login: React.FC = () => {
     });
     const data= await response.json();
     localStorage.setItem('token', data.token);
-    console.log(data);
+    setToken(data.token);
     setLoading(false);
   }
   const handleChange =  (event: React.ChangeEvent<HTMLInputElement>)=>{
@@ -79,6 +80,8 @@ const Login: React.FC = () => {
     }));
   }
   
+  if(token) return redirect('/');
+
   return (
     <Container>
       <Title>Library Login</Title>
