@@ -1,5 +1,7 @@
 # demo
 This is just a demo <br>
+Anyone ca contribute improvements to the code. So that i can improve and can learn better and optimised things.
+<br>
 I am a new developer learning things so i am not sure how everything works but i am trying best. This is a piece of practice that i am doing.(Not a project)
 <br>
 <b> Author - syntax-tic </b>
