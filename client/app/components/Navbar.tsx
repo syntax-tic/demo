@@ -4,14 +4,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import styles from './Navbar.module.css'; // Importing CSS module
-
+import { useToken } from '../context/TokenProvider';
 interface NavbarProps {
   onLogout?: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = () => {
   const pathname = usePathname(); // Get the current path
-  const [token, setToken] = useState(localStorage.getItem('token')); 
+  const {token, setToken} = useToken(); 
 
 const onLogout = ()=>{
   localStorage.removeItem('token');

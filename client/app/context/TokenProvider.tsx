@@ -22,7 +22,7 @@ export const TokenProvider: React.FC<TokenProviderProps> = ({children}) =>{
         if(newToken){
             localStorage.setItem('token', newToken);
         }
-        else{}
+        else
             localStorage.removeItem('token');
     }
    

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Loader from './Loader';
 import { redirect } from 'next/navigation';
+import { useToken } from '../context/TokenProvider';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,7 +56,7 @@ const Register: React.FC = () => {
     password: ""
   });
   const [message, setMessage] = useState<string | null>(null);
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const {token, setToken} = useToken();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);

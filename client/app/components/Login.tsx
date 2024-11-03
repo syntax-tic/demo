@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Loader from './Loader';
 import { redirect } from 'next/navigation';
-
-  
+import { useToken, TokenProvider } from '../context/TokenProvider';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,7 +55,7 @@ const Login: React.FC = () => {
     username: "",
     password: ""
   });
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const {token, setToken} = useToken();
   const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) =>{
     event.preventDefault();
     setLoading(true);
@@ -83,6 +82,7 @@ const Login: React.FC = () => {
   if(token) return redirect('/');
 
   return (
+
     <Container>
       <Title>Library Login</Title>
       <Form onSubmit={handleSubmit}>
