@@ -67,7 +67,6 @@ const BookCard:React.FC<BookCardProps> = ({book}) => {
     <ISBN>ISBN: {book.isbn}</ISBN>
     <Button onClick={()=>handleClick(book)}>Details</Button>
   </Card>
-    
   )
 }
 

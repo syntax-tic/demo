@@ -25,4 +25,4 @@ const Books = async () => {
   );
 }
 
-export default Books
+export default Books;
