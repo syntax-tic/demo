@@ -1,3 +1,4 @@
+Hello this is syntax-tic
 # demo
 This is just a demo <br>
 Anyone can contribute improvements to the code. So that i can improve and can learn better and optimised things.
